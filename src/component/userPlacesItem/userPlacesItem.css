@@ -1,0 +1,47 @@
+.userPlaceItem{
+    padding: 50px 0;
+}
+
+.userPlaceItemBox{
+    background-color: blanchedalmond;
+    height: 380px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 6px 11px 17.5px rgb(0,0,0.5);}
+
+
+    .userPlaceImg{
+        height: 150px;
+        width: 150px;
+        border-radius: 5px; 
+        background-position: center;
+        background-size: cover;
+    }
+
+    .btnContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 80%; */
+    padding-top: 20px;
+    }
+
+    .btn{
+        padding: 8px 5px;
+        margin: 5px;
+        background-color: transparent;
+        border: 1px solid rgba(138,150,163,1.25);;
+        outline: none;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        transition: border 300ms;
+    }
+
+    .btn:hover{
+        border: 1px solid #00aff0;
+    }

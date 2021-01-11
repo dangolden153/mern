@@ -1,0 +1,40 @@
+.signup{
+    width: 50%;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.signupContainer{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.input{
+    margin: 20px 0 ;
+    padding: 8px 15px;
+    outline: none;
+}
+
+.signUpbtn{
+    padding: 8px 15px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.formHeading{
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(138,150,163,1.25);
+    margin-bottom: 31px;
+}

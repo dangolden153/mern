@@ -1,72 +1,69 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, {useCallback,useState, useContext} from 'react'
+import NavBar from './component/navBar/navBar' 
+import User from './component/user/user'
+import Places from './component/userPlaces/userPlaces'
+import SignUp from './component/signUp/signUp'
+import Login from './component/login/login'
+import Form from './component/form/form'
+import addPlace from './component/addPlaces/addPlaces'
+import {AuthContext} from './component/AuthContext/AuthContext'
+import {Route, Switch, Router, Redirect} from 'react-router-dom'
 
-import Home from './component/home/home'
-import SubscribePage from './component/subscibePage/subscrubPage'
-import Card  from './component/card/card'
-import HeaderNav from './component/headerNav/headerNav'
-import SubscriptonPage from './pages/subscribePage/subscribePage'
-import NotFoundPage from './component/notFoundPage/notFoundPage'
+const App = ()=>{
 
-import {Route, Switch} from 'react-router-dom'
-
-
- class  App extends Component {
-  constructor(){
-    super();
-    this.state={
-      isLoginStatus : "NOT_LOGGED_IN",
-      user: {}
-    }
-
-    this.handleLogin = this.handleLogin.bind(this)
-  }
-
-  handleLogin =(data)=>{
-    this.setState({
-      isLoginStatus : "LOGGED_IN",
-      user: data
-    })
-  }
-
-  render (){
-  return (
-    <div className="App">
-
-    <HeaderNav/>
-    
-<Switch>
-  
-<Route exact path='/' component={Home} />
+const [isLoggedIn, setIsloggedIn] = useState(false)
 
 
-<Route
- path='/card'
-  render ={ props => (
-  <Card {...props} handleLogin={this.handleLogin} isLoginStatus={this.state.isLoginStatus}/>)} />
+const login =useCallback(()=>{
+  setIsloggedIn(true)
 
-<Route  
-path='/sub'
-render ={ props => (
-<SubscribePage {...props}  isLoginStatus = {this.state.isLoginStatus}/>)}
+},[])
+const logout =useCallback(()=>{
+  setIsloggedIn(false)
 
- />
+},[])
 
-{/* <Route  
-path='/home'
-render ={ props => (
-<Home {...props}  isLoginStatus = {this.state.isLoginStatus}/>)}
+const auth = useContext(AuthContext)
 
- /> */}
+let route
 
- <Route path='/subpage' component={SubscriptonPage} />
+if (isLoggedIn){
 
-<Route path='/error' component={NotFoundPage} />
-</Switch>
+  route = (
+    <React.Fragment>
+    <Route path='/' exact component={User} />
+    <Route path='/:userId/places' exact component={Places} />
+    <Route path='/addPlace' exact component={addPlace} />
+
+    <Redirect to='/' />
+    </React.Fragment>
+  )
+
+
+} else {
+
+  route = (
+    <React.Fragment>
+    <Route path='/' exact component={User} />
+    <Route path='/:userId/places' exact component={Places} />
+    <Route path='/form' exact component={Form} />
+
+    <Redirect to='/form' />
+    </React.Fragment>
+  )
+
+}
+
+
+  return(
+
+    <AuthContext.Provider value ={{isLoggedIn:isLoggedIn, login: login, logout: logout}}>
+      <NavBar />
+
+      <Switch>{route}</Switch>
       
-    </div>
+    </AuthContext.Provider>
   )
 }
-}
 
-export default App;
+export default App
