@@ -1,30 +1,62 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import UserItems from '../userItems/userItems'
-
+import LoadingSpinner from '../loadingSpinner/loadingSpinner'
+import ErrorModel from '../errorModel/errorModel'
+import Button from '../customButton/button'
+import axios from 'axios'
 import './user.css'
-
-const DAN_DATA = [
-    {
-        id: 'p1',
-        name: 'Dan Golden',
-        email: 'test@gmail.com',
-        title: 'Sweet in the middle',
-        places : '4 places',
-        image : `${require('../pics/section3.jpg')}`,
-        description: 'music sang by Nigeria artists',
-
-    }
-]
 
 
 
 const User = ()=>{
+
+    const [loadingSpinner, setLoadingSpinner] = useState(false)
+    const [error, setError] = useState ()
+    const [loadedUser, setloadedUser] = useState ()
+
+
+
+  const res = ()=>{
+    setLoadingSpinner(true)
+    axios.get("http://localhost:5000/api/users")
+    .then(response =>{
+        console.log(response)
+        setloadedUser(response.data.user)
+        setLoadingSpinner(false)
+
+    }).catch (error => {
+        console.log(error)
+        setLoadingSpinner(false)
+        setError('cannot fetch users,please try again')
+
+    })
+  }
+
+  useEffect(()=>{
+      res()
+  },[])
+
+  const errorHandler =()=>{
+      setError(null)
+  }
+
     return (
         <div className="user">
+            {loadingSpinner && (
+                <LoadingSpinner />
+            )}
+
+            {error && (
+                <ErrorModel error={error} show={error} 
+                onCancel={errorHandler}
+                footer={<Button onClick={errorHandler} danger>close</Button>}
+                />
+            )}
 
         <div className="userBox">
             {
-                DAN_DATA.map(data => <UserItems data={data} key={data.id} />)
+              !loadingSpinner && loadedUser && loadedUser.map(data =>
+                 <UserItems data={data} key={data.id} place={data.places.length} />)
             }
         </div>
         </div>

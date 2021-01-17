@@ -1,12 +1,13 @@
 .navBox{
-    height: 5rem;
-    background-color: pink;
+    height: 4rem;
+    background-color: #343a40;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    position: sticky;
     top: 0;
     padding: 0 10px;
+    z-index: 100;
 }
 
 .placeHeading{
@@ -19,13 +20,13 @@
 .navList{
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     list-style: none;
 }
 
 .navItems{
-    color: black;
+    color: white;
     font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
@@ -39,4 +40,19 @@
 a{
     text-decoration: none;
 
+}
+
+.navSvg{
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.navSvgHeading{
+    height: 55px;
+    width: 44px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 25px;
 }

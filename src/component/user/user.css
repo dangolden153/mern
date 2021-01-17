@@ -1,6 +1,8 @@
 .userBox{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    flex-direction: column;
+    justify-items: center;
     align-items: center;
     padding-top: 20px;
 }

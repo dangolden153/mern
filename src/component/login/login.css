@@ -1,3 +1,6 @@
-.loginContainer{
-    height: 296px;
+.btn_Box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

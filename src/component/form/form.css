@@ -1,9 +1,8 @@
 .form{
     display: flex;
     flex-direction: column;
-    background-color: rgb(241, 111, 88 , .5);
-    width: 60%;
     margin:30px auto;
+    align-items: center;
 }
 
 .formbtn{

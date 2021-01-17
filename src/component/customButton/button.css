@@ -1,0 +1,95 @@
+.button{
+    background-color: #17a2b8;
+    border-radius: 3px;
+    padding:8px 18px ;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all .2s ease;
+    text-align: center;
+    margin: 10px;
+}
+
+.button:focus{
+    outline: none;
+}
+
+.button:hover{
+    background-color: #035fc0;
+
+}
+
+.border{
+    background-color: transparent;
+    border-radius: 3px;
+    padding:8px 18px ;
+    border: 1px solid #20c997;
+    outline: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all .2s ease;
+}
+
+.border:focus{
+    outline: none;
+}
+
+.border:hover{
+    background-color: #28a745;
+    color: white;
+}
+
+
+.inverse{
+    background-color: #6f42c1;
+    border-radius: 3px;
+    padding:8px 18px ;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all .2s ease;
+}
+
+.inverse:focus{
+    outline: none;
+}
+
+.inverse:hover{
+    background-color: #6610f2;
+
+}
+
+.danger{
+    background-color: #f14859;
+    border-radius: 3px;
+    padding:8px 18px ;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all .2s ease;
+}
+
+.danger:focus{
+    outline: none;
+}
+
+.danger:hover{
+    background-color: #f00e25;
+
+}
+
+a{
+    text-decoration: none;
+    
+}

@@ -1,22 +1,31 @@
-import React from 'react'
+import React, {useContext} from 'react' 
 import {Link} from 'react-router-dom'
+import {AuthContext } from '../AuthContext/AuthContext'
+
 import './userItems.css'
 
-const UserItems = ({data : {name,id,places, image}})=>{
+const UserItems = ({data,place })=>{
+    const  {name,id, image, email, } = data
+    
+       
     return (
 <>
-        <Link to='/u1/places'>
+       <Link to={`/${id}/places`} className ='link'> 
         <div className="userItems">
 
 
             <div className="placeImg"
-            style={{
-                backgroundImage: `url(${image})`
-            }}/>
+            // style={{
+            //     backgroundImage: `url(http://localhost:4000/${image})`
+            // }} 
+            >
+                <img src={`http://localhost:5000/${image}`} alt="..."/>
+            </div>
 
             <div className="placeText">
             <div className="name">{name}</div>
-            <div className="name">{places}</div>
+            <div className="name">{email}</div>
+            <div className="name">{place} places</div>
 
             
             </div>

@@ -1,0 +1,26 @@
+.model_content{
+    position: fixed;
+    top: 22vh;
+    left: 10%;
+    margin: 0 auto;
+    z-index: 100;
+    width: 80%;
+    background-color:white;
+    box-shadow: 0 2px 8px rgba(0,0,0, 0.26);
+    border-radius: 8px;
+}
+
+.model_header{
+    width: 100%;
+    background-color:#26006e ;
+    color: white;
+    padding: 1rem 0.5rem;
+
+}
+.model_children_content{
+    padding: 1rem 0.5rem 4rem;
+}
+
+.model_footer{
+
+}
