@@ -4,7 +4,20 @@ import LoadingSpinner from '../loadingSpinner/loadingSpinner'
 import ErrorModel from '../errorModel/errorModel'
 import axios from 'axios'
 import {useParams, useHistory} from 'react-router-dom'
+import {motion} from 'framer-motion'
+import Button from '../customButton/button'
+
+
 import './updatePlace.css'
+
+
+
+const variantContainer = {
+    hidden: {opacity: 0, y: "-100vh"},
+    visible: {opacity: 1, y:0 ,
+    transistion: {duration: 2, ease: "easeIn" }
+    }
+}
 
 const UpdatePlace = ()=>{
 
@@ -52,7 +65,7 @@ const UpdatePlace = ()=>{
         
         try {
         
-            const response = await fetch(`http://localhost:5000/api/places/${placeId}`,{
+            const response = await fetch(`https://dan-chatapp.herokuapp.com/api/places/${placeId}`,{
                 method : 'PATCH',
                 body : JSON.stringify({
                     title : title,
@@ -76,48 +89,51 @@ const UpdatePlace = ()=>{
 return (
     <div className="updatePlace">
         
+        <motion.div className="addplace"
+        variants={variantContainer}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        >
+
         {error && (
-            <ErrorModel error ={error} onCancel={handleError}/>
+            <ErrorModel error={error} onCancel={handleError}/>
         )}
 
         {loadingSpinner && (
             <LoadingSpinner/>
         )}
 
-        <div className="signup">
-            <div className="signupContainer loginContainer">
-                <h3 className="formHeading">update place</h3>
-            <div className="inputContainer">
-           <label htmlFor="title">Title</label>
+            <div className="signupContainer">
+                <h3 className="formHeading">Update Post</h3>
+   
+            
             <input
-            className='input'
+            className='input addPlace_input'
             id='title'
              type="text"
              value={title}
              onChange = {e => setTitle(e.target.value)}
              />
-              </div>
+             
 
-            <div className="inputContainer">
-
-           <label htmlFor="description">Description</label>
-
-           <textarea 
-           className='input '
+          
+            <textarea 
+           className='input addPlace_text'
            name="description" 
-           id="description" cols="20" 
-           rows="7"
+           id="description" cols="45" 
+           rows="9"
            value={description}
              onChange = {e => setdescription(e.target.value)}
            />
-            
-              </div>
+          
 
-              <button 
-              className="btn signUpbtn" 
-              onClick={handleSubmit}>update place</button>
+              <Button buttonClass='addplace_btn' border
+              onClick={handleSubmit}
+              >Update Post</Button>
               </div>
-        </div>
+       
+              </motion.div>
     </div>
 )
 

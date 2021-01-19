@@ -55,11 +55,13 @@ const auth = useContext(AuthContext)
             )}
             
             {auth.isLoggedIn && (
-            <Link > <li className="navItems" onClick={auth.logout}><div className="navSvg"
+            <Link to='/login'> <li className="navItems" onClick={auth.logout}>
+             {/* <div className="navSvg"
             style={{
                 backgroundImage : `url(${profile})`
             }}
-            /></li></Link> 
+            /> */} LOGOUT
+            </li></Link> 
             )}           
             </ul>
         </nav>

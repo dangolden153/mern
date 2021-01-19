@@ -1,9 +1,13 @@
 .updatePlace{
-    background-color: rgb(241, 111, 88 , .5);
-    width: 60%;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding-top: 86px;
+    background-color: #F2F3F5;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
 }
 
-.textarea{
+/* .textarea{
     height: 80px;
-}
+} */

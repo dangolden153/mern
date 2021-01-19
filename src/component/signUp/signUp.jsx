@@ -36,13 +36,13 @@ const SignUp = ()=>{
         formData.append('password', password)
         formData.append('image', file)
 
-        axios.post("http://localhost:5000/api/users/signup",
+        axios.post("https://dan-chatapp.herokuapp.com/api/users/signup",
         formData )
         .then((response)=>{
             console.log(response)
             setLoadingSpinner(false)
             auth.login(response.data.userId, response.data.token )
-            
+            history.push('/')
 
         }).catch(error =>{
             console.log(error)

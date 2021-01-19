@@ -19,7 +19,7 @@ const UserItems = ({data,place })=>{
             //     backgroundImage: `url(http://localhost:4000/${image})`
             // }} 
             >
-                <img src={`http://localhost:5000/${image}`} alt="..."/>
+                <img src={`https://dan-chatapp.herokuapp.com/${image}`} alt="..."/>
             </div>
 
             <div className="placeText">

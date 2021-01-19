@@ -3,6 +3,7 @@ import UserItems from '../userItems/userItems'
 import LoadingSpinner from '../loadingSpinner/loadingSpinner'
 import ErrorModel from '../errorModel/errorModel'
 import Button from '../customButton/button'
+import AddPlace from '../addPlaces/addPlaces'
 import axios from 'axios'
 import './user.css'
 
@@ -18,7 +19,7 @@ const User = ()=>{
 
   const res = ()=>{
     setLoadingSpinner(true)
-    axios.get("http://localhost:5000/api/users")
+    axios.get("https://dan-chatapp.herokuapp.com/api/users")
     .then(response =>{
         console.log(response)
         setloadedUser(response.data.user)
@@ -58,6 +59,7 @@ const User = ()=>{
               !loadingSpinner && loadedUser && loadedUser.map(data =>
                  <UserItems data={data} key={data.id} place={data.places.length} />)
             }
+          
         </div>
         </div>
     )

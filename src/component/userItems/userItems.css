@@ -31,3 +31,16 @@
 .name{
     color: white;
 }
+
+@media screen and (max-width: 800px){
+    .userItems{
+        width: 89%;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .placeText{
+        margin: 10px;
+        width: 150px;
+    }
+}

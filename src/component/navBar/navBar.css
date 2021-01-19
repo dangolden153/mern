@@ -56,3 +56,13 @@ a{
     background-position: center;
     margin-left: 25px;
 }
+
+@media screen and (max-width: 800px){
+    .navSvgHeading{
+        margin-left: unset;
+    }
+
+    .navList{
+        width:81% ;
+    }
+}

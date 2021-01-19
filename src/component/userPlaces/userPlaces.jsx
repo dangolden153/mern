@@ -3,6 +3,7 @@ import UserPlaceItem from '../userPlacesItem/userPlacesItem'
 import {useParams} from 'react-router-dom'
 import LoadingSpinner from '../loadingSpinner/loadingSpinner'
 import ErrorModel from '../errorModel/errorModel'
+import Button from '../customButton/button'
 import Axios from 'axios'
 
 import './userPlaces.css' 
@@ -18,7 +19,7 @@ const Places =()=>{
   const res = async ()=>{
     setLoadingSpinner(true)
     try {
-        const response = await fetch(`http://localhost:5000/api/places/users/${userId}`, {
+        const response = await fetch(`https://dan-chatapp.herokuapp.com/api/places/users/${userId}`, {
         method : 'GET',
     }) 
 
@@ -26,7 +27,6 @@ const Places =()=>{
     setLoadedPlace(responseData.places)
     setError(responseData.message)
     console.log(responseData)
-
     setLoadingSpinner(false)
 
 
@@ -56,12 +56,13 @@ const Places =()=>{
     return(
         <div className="userplace">
              {error && (
-            <ErrorModel error ={error} onCancel={handleError}/>
+            <ErrorModel error ={error} 
+            footer={<Button onClick={handleError}>close</Button>}/>
         )}
 
 
         {loadingSpinner && (
-            <LoadingSpinner/>
+            <LoadingSpinner onClick={handleError}/>
         )}
 
         

@@ -1,7 +1,11 @@
 .home_content{
     position: relative;
     font-family: inherit;
+    
+    
 }
+
+
 
 .home_container{
     position: relative;
@@ -13,14 +17,14 @@
 
 .home_content_text{
     position: absolute;
-    top: 50%;
+    top: 40%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: white;
     padding-left: 75px;
-    width: 34%;
-    z-index: 100;
+    width: 45%;
+    z-index: 1000;
 }
 
 .home_content_header{
@@ -32,8 +36,29 @@
 
 .home_content_paragh{
     font-size: 15px;
+    width: 80%;
+
 }
 
+.home_btn{
+    padding: unset;
+    width: 29%;
+    text-align: left;
+    margin: 20px 0;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.home_btn:focus{
+    border: none;
+    outline: none;
+}
 
 .btnSvg{
     height: 15px;
@@ -53,7 +78,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: .6;
+    opacity: .4;
 }
 
 video{
@@ -72,4 +97,33 @@ video{
     height: 100vh;
     background-color: black;
     opacity: .2;
+}
+
+.shine{
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: rotate(90deg);
+    font-size: 15px;
+    color: white;
+    font-style: italic;
+}
+@media screen and (max-width: 800px){
+   .home_content_text{
+       top: 30%;
+       width: 86%;
+       padding-left: 20px;
+   }
+
+   .home_content_header{
+       font-size: 30px;
+   }
+
+   .home_btn{
+       width: 50%;
+   }
+
+   .shine{
+       top: 81%;
+   }
 }

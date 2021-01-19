@@ -1,44 +1,29 @@
 import React, {useRef , useState, useEffect} from 'react'
 import Button from '../customButton/button'
+import picSvg from '../pics/image.svg'
 import './imageUpload.css'
 
-const ImageUpload = ({files , setFiles , id}) =>{
+const ImageUpload = ({setFiles, files, id}) =>{
 
-    
-    const [previewUrl, setPreviewUrl] =useState()
-    const [isValid, setIsVAlid] =useState(false)
-
-    useEffect(()=>{
-        if (!files)
-        return
-
-        const fileReader = new FileReader()
-        fileReader.onload=()=>{
-            setPreviewUrl(fileReader.result)
-        }
-        
-        fileReader.readAsDataURL(files)
-    },[files])
+    const filePickerRef = useRef();
+    const [previewUrl, setPreviewUrl] = useState()
 
     const pickHandler = event =>{
-        
-        if (event.target.files && event.target.files.length === 1){
-            setFiles(event.target.files[0])
-            console.log(setFiles)
-            setIsVAlid(true)
-            
-
-        } else {
-            setIsVAlid(false)
-           
-        }
-
-        // props.onInput( props.id, pickFile)
-
+        setFiles(event.target.files[0])
 
     }
+
+    useEffect(()=>{
+        if(!files){
+            return;
+        }
+      const fileReader = new FileReader()  
+      fileReader.onload =()=>{
+          setPreviewUrl(fileReader.result)
+      }
+      fileReader.readAsDataURL(files)
+    },[files])
     
-    const filePickerRef = useRef();
 
     const imgUploadHandler =()=>{
         filePickerRef.current.click()
@@ -46,7 +31,6 @@ const ImageUpload = ({files , setFiles , id}) =>{
 
     return (
         <div className="image_Upload">
-            
             <input
             ref={filePickerRef}
             type="file"
@@ -56,21 +40,25 @@ const ImageUpload = ({files , setFiles , id}) =>{
             id={id}
             accept = ".jpg, .png, .jpeg"
             onChange={pickHandler}
-            files = 'image'
-            /> 
+            />
 
         <div className="image-upload">
-            <div className="imgPreview">
-         { previewUrl && <img src={previewUrl} alt="preview"/>  }
-         { !previewUrl && <p>please upload an image</p>  }
-
-                
+            <div className={previewUrl ? "imgPreview" : "emptyImgPreview"}>
+              {previewUrl &&  <img src={previewUrl} alt="preview"/>}
             </div>
-            <Button inverse
+            <Button border
             onClick={imgUploadHandler}
-            className="imgBtn">PICK IMAGE</Button>
-        </div> 
-
+            buttonClass="imgBtn">
+                <div className="btnDiv">
+                <div className="pictext">add a pic...</div>
+                <div className="picSvg" 
+                style={{
+                    backgroundImage: `url(${picSvg})`
+                }}
+                />
+                </div>
+            </Button> 
+        </div>
 
         </div>
     )

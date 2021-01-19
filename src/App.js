@@ -8,14 +8,15 @@ import addPlace from './component/addPlaces/addPlaces'
 import  UpdatePlace from './component/updatePlace/updatePlace'
 import Login from './component/login/login'
 import SignUp from './component/signUp/signUp'
-
+import {AnimatePresence} from 'framer-motion'
 
 import ErrorModel from './component/errorModel/errorModel'
 import {AuthContext} from './component/AuthContext/AuthContext'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {Route, Switch, Redirect, useLocation} from 'react-router-dom'
 
 const App = ()=>{
 
+const location = useLocation()  
 const [token, setToken] = useState(false)
 const [userId, setUserId] = useState(false)
 
@@ -71,7 +72,7 @@ if (token){
     <Route path='/login'  component={Login} />
     <Route path='/sign'  component={SignUp} />
 
-    <Redirect to='/auth' />
+    <Redirect to='/' />
     </React.Fragment>
   )
 
@@ -89,8 +90,12 @@ if (token){
        }}>
       <NavBar />
 
-      <Switch>{route}</Switch>
-      
+       {/* <AnimatePresence exitBeforeEnter> */}
+      <Switch >
+        {route}
+        </Switch>
+      {/* </AnimatePresence> */}
+
     </AuthContext.Provider>
   )
 }

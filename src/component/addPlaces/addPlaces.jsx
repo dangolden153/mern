@@ -4,21 +4,34 @@ import LoadingSpinner from '../loadingSpinner/loadingSpinner'
 import {AuthContext } from '../AuthContext/AuthContext'
 import {useParams, useHistory} from 'react-router-dom'
 import ImageUpload from '../ImageUpload/ImageUpload'
+import Button from '../customButton/button'
+import Model from '../model/model'
 import Axios from 'axios'
+import {motion} from 'framer-motion'
 
 import './addplace.css'
 
+
+const variantContainer = {
+    hidden: {opacity: 0, y: "-100vh"},
+    visible: {opacity: 1, y:0 ,
+    transistion: {duration: 2, ease: "easeIn" }
+    }
+}
 
 
     const AddPlace = ()=>{
 
     const [loadingSpinner, setLoadingSpinner] = useState(false)
     const [error, setError] = useState ()
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('please write a title...')
+    const [description, setDescription] = useState(`whats's on your mind `)
     const [file, setFile] =useState()
+    const [showModel, setShowModel] =useState(true)
 
-      
+     
+
+
       const auth = useContext(AuthContext)  
       const history = useHistory()
 
@@ -30,7 +43,7 @@ import './addplace.css'
         formData.append('description', description)
         formData.append('image', file)
         formData.append('creator', auth.userId)
-        
+        setLoadingSpinner(true)
        Axios.post("http://localhost:5000/api/places", formData, {
            headers :{
             Authorization : 'Bearer ' + auth.token
@@ -39,9 +52,13 @@ import './addplace.css'
         .then(response=>{
             console.log(response)
             history.push(`/${auth.userId}/places`)
+            setLoadingSpinner(false)
+
         })
         .catch(err=>{
             console.log(err)
+            setLoadingSpinner(false)
+
         })
     } 
 
@@ -51,9 +68,14 @@ import './addplace.css'
 
     return (
         <React.Fragment>
-        <div className="addplace">
-        
-        <div className="signup">
+            <div className="addPlace_container">
+
+        <motion.div className="addplace"
+        variants={variantContainer}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        >
 
         {error && (
             <ErrorModel error={error} onCancel={handleError}/>
@@ -63,50 +85,45 @@ import './addplace.css'
             <LoadingSpinner/>
         )}
 
-
             <div className="signupContainer">
-                <h3 className="formHeading">Add a new place</h3>
+                <h3 className="formHeading">Create Post</h3>
    
-            <div className="inputContainer">
-           <label htmlFor="title">Title</label>
+            
             <input
-            className='input'
+            className='input addPlace_input'
             id='title'
              type="text"
              value={title}
              onChange = {e => setTitle(e.target.value)}
              />
-              </div>
+             
 
-            <div className="inputContainer">
-
-           <label htmlFor="description">description</label>
-    
+          
             <textarea 
-           className='input '
+           className='input addPlace_text'
            name="description" 
-           id="description" cols="20" 
-           rows="7"
+           id="description" cols="45" 
+           rows="9"
            value={description}
              onChange = {e => setDescription(e.target.value)}
            />
-             </div>
+          
 
              {
                   !loadingSpinner && 
                   <ImageUpload 
                   id='image'
                   files={file} 
-                  setFiles={setFile}
+                  setFiles={setFile} 
                     />
               }
 
-              <button 
+              <Button buttonClass='addplace_btn' border
               onClick={handleSubmit}
-              className="btn signUpbtn">Add place</button>
+              >Post</Button>
               </div>
-        </div>
-   
+       
+              </motion.div>
         </div>
         </React.Fragment>
      )

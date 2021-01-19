@@ -24,7 +24,7 @@ const ModelContent = props =>{
 
     const content =( 
         <AnimatePresence exitBeforeEnter>
-        <motion.div className={`model_content ${props.model}`}
+        <motion.div className={`model_content ${props.modelClass}`}
         variants={model}
        initial="hidden"
        animate="vissible"

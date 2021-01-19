@@ -33,6 +33,7 @@ const Login = ()=>{
             console.log(response)
             setLoadingSpinner(false)
             auth.login(response.data.userId, response.data.token)
+            history.push('/user')
 
         }).catch(error =>{
             console.log(error)

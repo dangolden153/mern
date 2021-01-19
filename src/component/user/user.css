@@ -6,3 +6,11 @@
     align-items: center;
     padding-top: 20px;
 }
+
+@media screen and (max-width: 800px){
+    .userBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
