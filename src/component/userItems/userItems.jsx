@@ -25,7 +25,7 @@ const UserItems = ({data,place })=>{
             <div className="placeText">
             <div className="name">{name}</div>
             <div className="name">{email}</div>
-            <div className="name">{place} places</div>
+            <div className="name">{place} post</div>
 
             
             </div>
