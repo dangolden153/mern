@@ -16,7 +16,9 @@
     box-shadow: 6px 11px 17.5px rgb(0,0,0.5);}
 
     .user_padding_box{
-        padding: 10px 0px 0px 10px;
+        padding: 10px;
+        width: 90%;
+        margin: 0 auto;
     }
 
 .user_placeText{
