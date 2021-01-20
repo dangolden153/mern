@@ -35,7 +35,7 @@ const UpdatePlace = ()=>{
 
     const res = ()=>{
         setLoadingSpinner(true)
-        axios.get(`http://localhost:5000/api/places/${placeId}`)
+        axios.get(`https://dan-chatapp.herokuapp.com/api/places/${placeId}`)
         .then(response =>{
             console.log(response)
             setTitle(response.data.place.title)
