@@ -44,7 +44,7 @@ const variantContainer = {
         formData.append('image', file)
         formData.append('creator', auth.userId)
         setLoadingSpinner(true)
-       Axios.post("http://localhost:5000/api/places", formData, {
+       Axios.post("https://dan-chatapp.herokuapp.com/api/places", formData, {
            headers :{
             Authorization : 'Bearer ' + auth.token
            }
