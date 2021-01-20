@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import UserPlaceItem from '../userPlacesItem/userPlacesItem'
+import {AuthContext } from '../AuthContext/AuthContext'
 import {useParams} from 'react-router-dom'
 import LoadingSpinner from '../loadingSpinner/loadingSpinner'
 import ErrorModel from '../errorModel/errorModel'
@@ -14,6 +15,7 @@ const Places =()=>{
     const [error, setError] = useState ()
     const [loadedPlace, setLoadedPlace] = useState ()
    
+    const auth = useContext(AuthContext)
   const  userId = useParams().uid
 
   const res = async ()=>{
@@ -57,7 +59,12 @@ const Places =()=>{
         <div className="userplace">
              {error && (
             <ErrorModel error ={error} 
-            footer={<Button onClick={handleError}>close</Button>}/>
+            footerClass="footerBtn"
+            footer={
+            <div>
+                <Button inverse onClick={handleError}>close</Button>
+                <Button to='/place/new'>create a post</Button> 
+            </div> }/>
         )}
 
 

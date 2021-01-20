@@ -65,7 +65,7 @@ const UserPlaceItem = ({data , onDelete})=>{
         <React.Fragment>
             {error && (
             <ErrorModel error ={error}
-            footer={<Button onClick={handleError}>close</Button>} />
+            footer={ <Button onClick={handleError}>close</Button>} />
         )}
 
         {loadingSpinner && (
