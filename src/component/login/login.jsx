@@ -69,7 +69,7 @@ const handleError = ()=>{
             className='input'
             id='name'
             label='email'
-             type="text"
+             type="email"
              value={email}
              onChange = {e => setemail(e.target.value)}
              />

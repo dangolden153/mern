@@ -90,7 +90,7 @@ const handleError = ()=>{
             <FormInput
             className='input'
             id='name'
-             type="text"
+             type="email"
              label="email"
              value={email}
              onChange = {e => setemail(e.target.value)}

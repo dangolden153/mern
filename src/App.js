@@ -49,8 +49,8 @@ if (token){
 
   route = (
     <React.Fragment>
-    <Route path='/' exact component={HomePage} />
-    <Route path='/user'  component={User} />
+    <Route path='/auth'  component={Form} />
+    <Route path='/' exact component={User} />
     <Route path={`/:uid/places`}  component={Places} />
     <Route path='/places/:pid'  component={UpdatePlace} />
     <Route path='/place/new'  component={addPlace} />
@@ -65,14 +65,12 @@ if (token){
 
   route = (
     <React.Fragment>
-     <Route path='/' exact component={HomePage} />
-    <Route path='/user'  component={User} />
     <Route path='/auth'  component={Form} />
+    <Route path='/' exact  component={User} />
     <Route path='/error'  component={ErrorModel} />
     <Route path='/login'  component={Login} />
     <Route path='/sign'  component={SignUp} />
 
-    <Redirect to='/' />
     </React.Fragment>
   )
 

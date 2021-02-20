@@ -25,13 +25,13 @@ const auth = useContext(AuthContext)
             <ul className="navList">
 
          
-            <Link to='/user'  className='link'> <li className="navItems">
+            {/* <Link to='/'  className='link'> <li className="navItems">
                  <div className="navSvg"
                  style={{
                      backgroundImage : `url(${home})`
                  }}
                  />
-                 </li> </Link>
+                 </li> </Link> */}
            
 
             {auth.isLoggedIn && (
@@ -72,25 +72,3 @@ export default NavBar
 
 
 
-{/* <ul className="navList">
-
-         
-<Link to='/user'  className='link'> <li className="navItems"> all user</li> </Link>
-
-
-{auth.isLoggedIn && (
-<Link to={`/${auth.userId}/places`} className='link'><li className="navItems"> my place</li></Link>
-)}
-
-{auth.isLoggedIn && (
-<Link className='link' to='/place/new' ><li className="navItems">add place</li></Link> 
-)}
-
-{!auth.isLoggedIn && (
-<Link to='/auth'> <li className="navItems">authenticate</li></Link> 
-)}
-
-{auth.isLoggedIn && (
-<Link > <li className="navItems" onClick={auth.logout}>logout</li></Link> 
-)}           
-</ul> */}
